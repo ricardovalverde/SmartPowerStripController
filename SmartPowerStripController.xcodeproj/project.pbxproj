@@ -24,10 +24,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0598B43F2DE3F4AA00AA199A /* SmartPowerStripController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = SmartPowerStripController.app; path = "/Users/ricardovalverde/Documents/Projetos Pessoais/SmartPowerStripController/build/Debug/SmartPowerStripController.app"; sourceTree = "<absolute>"; };
-		0598B4402DE3F4AA00AA199A /* SmartPowerStripControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SmartPowerStripControllerTests.xctest; path = "/Users/ricardovalverde/Documents/Projetos Pessoais/SmartPowerStripController/build/Debug/SmartPowerStripController.app/Contents/PlugIns/SmartPowerStripControllerTests.xctest"; sourceTree = "<absolute>"; };
-		0598B4412DE3F4AA00AA199A /* SmartPowerStripControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SmartPowerStripControllerUITests.xctest; path = "/Users/ricardovalverde/Documents/Projetos Pessoais/SmartPowerStripController/build/Debug/SmartPowerStripControllerUITests-Runner.app/Contents/PlugIns/SmartPowerStripControllerUITests.xctest"; sourceTree = "<absolute>"; };
 		0598B4442DE3F75E00AA199A /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
+		05E760252DE4101D00203A9C /* SmartPowerStripController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartPowerStripController.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		05E760262DE4101D00203A9C /* SmartPowerStripControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartPowerStripControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		05E760272DE4101D00203A9C /* SmartPowerStripControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartPowerStripControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -80,6 +80,9 @@
 				0598C0D12DD17FE500EF816C /* SmartPowerStripControllerTests */,
 				0598C0DB2DD17FE500EF816C /* SmartPowerStripControllerUITests */,
 				0598B4442DE3F75E00AA199A /* Secrets.xcconfig */,
+				05E760252DE4101D00203A9C /* SmartPowerStripController.app */,
+				05E760262DE4101D00203A9C /* SmartPowerStripControllerTests.xctest */,
+				05E760272DE4101D00203A9C /* SmartPowerStripControllerUITests.xctest */,
 			);
 			sourceTree = "<group>";
 		};
@@ -105,7 +108,7 @@
 			packageProductDependencies = (
 			);
 			productName = SmartPowerStripController;
-			productReference = 0598B43F2DE3F4AA00AA199A /* SmartPowerStripController.app */;
+			productReference = 05E760252DE4101D00203A9C /* SmartPowerStripController.app */;
 			productType = "com.apple.product-type.application";
 		};
 		0598C0CD2DD17FE500EF816C /* SmartPowerStripControllerTests */ = {
@@ -128,7 +131,7 @@
 			packageProductDependencies = (
 			);
 			productName = SmartPowerStripControllerTests;
-			productReference = 0598B4402DE3F4AA00AA199A /* SmartPowerStripControllerTests.xctest */;
+			productReference = 05E760262DE4101D00203A9C /* SmartPowerStripControllerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		0598C0D72DD17FE500EF816C /* SmartPowerStripControllerUITests */ = {
@@ -151,7 +154,7 @@
 			packageProductDependencies = (
 			);
 			productName = SmartPowerStripControllerUITests;
-			productReference = 0598B4412DE3F4AA00AA199A /* SmartPowerStripControllerUITests.xctest */;
+			productReference = 05E760272DE4101D00203A9C /* SmartPowerStripControllerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */

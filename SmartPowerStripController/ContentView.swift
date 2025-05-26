@@ -28,17 +28,37 @@ struct ContentView: View {
 //                    try JSONDecoderSendCommandResponse(data: poweron)
 //                )
                 
-                let poweroff = try await NetworkManager.shared
-                    .sendCommandPowerOff()
+//                let poweroff = try await NetworkManager.shared
+//                    .sendCommandPowerOff()
+//                
+//
+//                print(
+//                    "PowerOff",
+//                    try JSONDecoderSendCommandResponse(data: poweroff)
+//                )
+                let battery = updateBatteryLevel()
                 
+                func checkBatteryStatus(_ level: Int) async throws{
+                    switch level {
+                    case 0..<20:
+                        print("Bateria fraca")
+                    case 20..<80:
+                        let poweroff = try await NetworkManager.shared
+                            .sendCommandPowerOn()
+                       
+                       
+                                       print(
+                                           "PowerOff",
+                                           try JSONDecoderSendCommandResponse(data: poweroff)
+                                       )
+                    case 80...100:
+                        print("Bateria cheia")
+                    default:
+                        print("Valor inválido")
+                    }
+                }
+               try await checkBatteryStatus(battery!)
 
-                print(
-                    "PowerOff",
-                    try JSONDecoderSendCommandResponse(data: poweroff)
-                )
-                
-
-              
 
             } catch {
                 print(error)
