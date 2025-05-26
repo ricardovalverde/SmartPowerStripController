@@ -20,17 +20,25 @@ struct ContentView: View {
                     response: try JSONDecoderTokenResponse(data: data)
                 )
 
-                let poweron = try await NetworkManager.shared
-                    .sendCommandPowerOn()
+//                let poweron = try await NetworkManager.shared
+//                    .sendCommandPowerOn()
+//
+//                print(
+//                    "PowerOn",
+//                    try JSONDecoderSendCommandResponse(data: poweron)
+//                )
+                
+                let poweroff = try await NetworkManager.shared
+                    .sendCommandPowerOff()
+                
 
                 print(
-                    "PowerOn",
-                    try JSONDecoderSendCommandResponse(data: poweron)
+                    "PowerOff",
+                    try JSONDecoderSendCommandResponse(data: poweroff)
                 )
+                
 
-                print(
-                    "Resposta: \(String(data: data, encoding: .utf8) ?? "Error")"
-                )
+              
 
             } catch {
                 print(error)
