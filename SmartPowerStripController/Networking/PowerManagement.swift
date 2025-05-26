@@ -9,36 +9,48 @@ import Foundation
 
 enum PowerManagement {
 
-    static func powerON() throws -> URLRequest {
-
-        let command = Command(code: "switch_1", value: true)
+    private static func powerSwitch(isOn: Bool) throws -> URLRequest {
+        let command = Command(code: "switch_4", value: isOn)
         let request = CommandRequest(commands: [command])
 
-        let jsonData = try? JSONEncoder().encode(request)
-   
+        guard let jsonData = try? JSONEncoder().encode(request) else {
+            throw URLError(.badServerResponse)
+        }
+
         guard let url = URL(string: APIConfig.baseURL + Endpoints.postCommand)
         else {
             throw URLError(.badURL)
         }
 
+        guard let token = TokenManager.shared.accessToken else {
+            throw URLError(.userAuthenticationRequired)
+        }
+
         let generateSignatureRequest = GenerateSignatureRequest(
-            token:TokenManager.shared.accessToken!,
+            token: token,
             httpMethod: HttpMethods.post,
             url: Endpoints.postCommand
         )
 
-        let generetedSignature = generateSignatureWithToken(
+        let generatedSignature = generateSignatureWithToken(
             signatureStructureRequest: generateSignatureRequest,
-            jsonData: jsonData!
+            jsonData: jsonData
         )
 
         return requestStruct(
             httpMethod: HttpMethods.post,
             url: url,
-            signature: generetedSignature,
+            signature: generatedSignature,
             body: jsonData
         )
+    }
+    
+    static func powerON() throws -> URLRequest {
+        return try powerSwitch(isOn: true)
+    }
 
+    static func powerOFF() throws -> URLRequest {
+        return try powerSwitch(isOn: false)
     }
 
 }

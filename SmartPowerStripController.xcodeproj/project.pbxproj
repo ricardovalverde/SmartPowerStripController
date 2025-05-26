@@ -24,9 +24,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0598B43F2DE3F4AA00AA199A /* SmartPowerStripController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SmartPowerStripController.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		0598B4402DE3F4AA00AA199A /* SmartPowerStripControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartPowerStripControllerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		0598B4412DE3F4AA00AA199A /* SmartPowerStripControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartPowerStripControllerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		0598B43F2DE3F4AA00AA199A /* SmartPowerStripController.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = SmartPowerStripController.app; path = "/Users/ricardovalverde/Documents/Projetos Pessoais/SmartPowerStripController/build/Debug/SmartPowerStripController.app"; sourceTree = "<absolute>"; };
+		0598B4402DE3F4AA00AA199A /* SmartPowerStripControllerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SmartPowerStripControllerTests.xctest; path = "/Users/ricardovalverde/Documents/Projetos Pessoais/SmartPowerStripController/build/Debug/SmartPowerStripController.app/Contents/PlugIns/SmartPowerStripControllerTests.xctest"; sourceTree = "<absolute>"; };
+		0598B4412DE3F4AA00AA199A /* SmartPowerStripControllerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = SmartPowerStripControllerUITests.xctest; path = "/Users/ricardovalverde/Documents/Projetos Pessoais/SmartPowerStripController/build/Debug/SmartPowerStripControllerUITests-Runner.app/Contents/PlugIns/SmartPowerStripControllerUITests.xctest"; sourceTree = "<absolute>"; };
 		0598B4442DE3F75E00AA199A /* Secrets.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = Secrets.xcconfig; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -79,9 +79,6 @@
 				0598C0C22DD17FE400EF816C /* SmartPowerStripController */,
 				0598C0D12DD17FE500EF816C /* SmartPowerStripControllerTests */,
 				0598C0DB2DD17FE500EF816C /* SmartPowerStripControllerUITests */,
-				0598B43F2DE3F4AA00AA199A /* SmartPowerStripController.app */,
-				0598B4402DE3F4AA00AA199A /* SmartPowerStripControllerTests.xctest */,
-				0598B4412DE3F4AA00AA199A /* SmartPowerStripControllerUITests.xctest */,
 				0598B4442DE3F75E00AA199A /* Secrets.xcconfig */,
 			);
 			sourceTree = "<group>";

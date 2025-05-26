@@ -17,11 +17,21 @@ final class NetworkManager {
         try ResponseValidator.validate(response)
         return data
     }
-    
-    func sendCommandPowerOn() async throws -> Data {
-        let request = try PowerManagement.powerON()
-        let (data,response) = try await URLSession.shared.data(for: request)
+
+    private func sendPowerCommand(with request: URLRequest) async throws -> Data
+    {
+        let (data, response) = try await URLSession.shared.data(for: request)
         try ResponseValidator.validate(response)
         return data
+    }
+
+    func sendCommandPowerOn() async throws -> Data {
+        let request = try PowerManagement.powerON()
+        return try await sendPowerCommand(with: request)
+    }
+
+    func sendCommandPowerOff() async throws -> Data {
+        let request = try PowerManagement.powerOFF()
+        return try await sendPowerCommand(with: request)
     }
 }
