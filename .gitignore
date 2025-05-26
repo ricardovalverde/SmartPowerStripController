@@ -1,0 +1,16 @@
+# Arquivos de credenciais
+Secrets.xcconfig
+
+# Xcode
+build/
+DerivedData/
+*.xcuserstate
+*.xcuserdatad
+*.xccheckout
+.xcode/
+
+# Sistemas
+.DS_Store
+
+# Dependências (se usar)
+Pods/
