@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
+
+    
     init() {
         Task {
 
@@ -19,7 +21,8 @@ struct ContentView: View {
                 TokenManager.shared.saveToken(
                     response: try JSONDecoderTokenResponse(data: data)
                 )
-
+                try await NetworkManager.shared
+                    .sendCommandPowerOn()
 //                let poweron = try await NetworkManager.shared
 //                    .sendCommandPowerOn()
 //
@@ -42,14 +45,14 @@ struct ContentView: View {
                     switch level {
                     case 0..<20:
                         print("Bateria fraca")
-                    case 20..<80:
-                        let poweroff = try await NetworkManager.shared
+                    case 30..<80:
+                        let poweron = try await NetworkManager.shared
                             .sendCommandPowerOn()
                        
                        
                                        print(
                                            "PowerOff",
-                                           try JSONDecoderSendCommandResponse(data: poweroff)
+                                           try JSONDecoderSendCommandResponse(data: poweron)
                                        )
                     case 80...100:
                         print("Bateria cheia")
@@ -65,9 +68,31 @@ struct ContentView: View {
             }
         }
     }
+    
+//    struct SliderExampleView: View {
+//        @State private var selectedValue: Double = 50
+//        @State private var isEditing = false
+//        var body: some View {
+//            VStack(spacing: 20) {
+//                Text("Valor selecionado: \(Int(selectedValue))")
+//                    .font(.title2)
+//
+//                Slider(
+//                           value: $selectedValue,
+//                           in: 0...100,
+//                           onEditingChanged: { editing in
+//                               isEditing = editing
+//                           }
+//                       )
+//            }
+//            .padding()
+//        }
+//    }
 
     var body: some View {
         VStack {
+            
+            
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)

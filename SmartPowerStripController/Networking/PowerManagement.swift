@@ -10,7 +10,7 @@ import Foundation
 enum PowerManagement {
 
     private static func powerSwitch(isOn: Bool) throws -> URLRequest {
-        let command = Command(code: "switch_4", value: isOn)
+        let command = Command(code: "switch_1", value: isOn)
         let request = CommandRequest(commands: [command])
 
         guard let jsonData = try? JSONEncoder().encode(request) else {
