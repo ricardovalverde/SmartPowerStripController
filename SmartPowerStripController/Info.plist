@@ -2,18 +2,22 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-    <key>CFBundleIdentifier</key>
-    <string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
-    <key>CFBundleName</key>
-    <string>$(PRODUCT_NAME)</string>
-      <!-- Variáveis do Secrets.xcconfig -->
-    <key>CLIENT_ID</key>
-    <string>$(CLIENT_ID)</string>
-    <key>CLIENT_SECRET</key>
-    <string>$(CLIENT_SECRET)</string>
-    <key>UID</key>
-    <string>$(UID)</string>
-    <key>DEVICE_ID</key>
-    <string>$(DEVICE_ID)</string>
+	<key>CFBundleExecutable</key>
+	<string></string>
+	<key>CFBundleIdentifier</key>
+	<string>$(PRODUCT_BUNDLE_IDENTIFIER)</string>
+	<key>CFBundleName</key>
+	<string>$(PRODUCT_NAME)</string>
+	<key>CLIENT_ID</key>
+	<string>$(CLIENT_ID)</string>
+	<key>CLIENT_SECRET</key>
+	<string>$(CLIENT_SECRET)</string>
+	<key>DEVICE_ID</key>
+	<string>$(DEVICE_ID)</string>
+	<key>UID</key>
+	<string>$(UID)</string>
+	<key>LSUIElement</key>
+	<true/>
+
 </dict>
 </plist>

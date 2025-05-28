@@ -47,13 +47,13 @@ class BatteryMonitor: ObservableObject {
         print("🔋 Nível da bateria: \(Int(batteryLevel))%")
 
         Task {
-            if batteryLevel <= 25 {
+            if batteryLevel <= 1 {
                 if estadoAtualDoSwitch != true {
                     print("🔋 Switch ligado devido ao nível de bateria baixo")
                     try await gerenciarEstadoSmartPowerStrip(ligar: true)
                     estadoAtualDoSwitch = true
                 }
-            } else if batteryLevel >= 75 {
+            } else if batteryLevel >= 10 {
                 if estadoAtualDoSwitch != false {
                     print("🔋 Switch desligado devido ao nível de bateria alto")
                     try await gerenciarEstadoSmartPowerStrip(ligar: false)
