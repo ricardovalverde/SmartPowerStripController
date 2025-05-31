@@ -12,7 +12,7 @@ class BatteryMonitor: ObservableObject {
     private var timer: Timer?
     private var estadoAtualDoSwitch: Bool? = nil
 
-    func startMonitoring(intervalMinutes: Double = 0.3) {
+    func startMonitoring(intervalMinutes: Double = 5.0) {
         timer = Timer.scheduledTimer(
             withTimeInterval: intervalMinutes * 60,
             repeats: true
@@ -47,13 +47,14 @@ class BatteryMonitor: ObservableObject {
         print("🔋 Nível da bateria: \(Int(batteryLevel))%")
 
         Task {
-            if batteryLevel <= 1 {
+            //TODO fazer validacao da resposta do sendcommando
+            if batteryLevel <= 25 {
                 if estadoAtualDoSwitch != true {
                     print("🔋 Switch ligado devido ao nível de bateria baixo")
                     try await gerenciarEstadoSmartPowerStrip(ligar: true)
                     estadoAtualDoSwitch = true
                 }
-            } else if batteryLevel >= 10 {
+            } else if batteryLevel >= 75 {
                 if estadoAtualDoSwitch != false {
                     print("🔋 Switch desligado devido ao nível de bateria alto")
                     try await gerenciarEstadoSmartPowerStrip(ligar: false)
