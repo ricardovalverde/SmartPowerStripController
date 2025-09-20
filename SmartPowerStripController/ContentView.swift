@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
 
     
-    init() {
+   /* init() {
         Task {
 
             do {
@@ -67,7 +67,7 @@ struct ContentView: View {
                 print(error)
             }
         }
-    }
+    }*/
     
 //    struct SliderExampleView: View {
 //        @State private var selectedValue: Double = 50

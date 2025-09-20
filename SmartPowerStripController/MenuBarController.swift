@@ -24,12 +24,14 @@ class MenuBarController {
 
         let menu = NSMenu()
 
-        menu.addItem(NSMenuItem(title: "Sair", action: #selector(quit), keyEquivalent: "q"))
+        let quitItem = NSMenuItem(title: "Sair", action: #selector(quit), keyEquivalent: "q")
+        quitItem.target = self // ⚡ Essencial para habilitar o item
+        menu.addItem(quitItem)
 
         statusItem.menu = menu
     }
 
-    @objc private func quit() {
+    @objc func quit() {
         NSApp.terminate(nil)
     }
 }
