@@ -8,37 +8,39 @@
 import Foundation
 import IOKit.ps
 
+import IOKit.ps
+
 class BatteryMonitor: ObservableObject {
-    private var timer: Timer?
+    private var runLoopSource: Unmanaged<CFRunLoopSource>?
     private var estadoAtualDoSwitch: Bool? = nil
 
-    func startMonitoring(intervalMinutes: Double = 5.0) {
-        timer = Timer.scheduledTimer(
-            withTimeInterval: intervalMinutes * 60,
-            repeats: true
-        ) { [weak self] _ in
-            self?.checkBatteryLevel()
+    func startMonitoring() {
+        let context = UnsafeMutableRawPointer(Unmanaged.passUnretained(self).toOpaque())
+        if let source = IOPSNotificationCreateRunLoopSource({ context in
+            let monitor = Unmanaged<BatteryMonitor>.fromOpaque(context!).takeUnretainedValue()
+            monitor.checkBatteryLevel()
+        }, context).takeRetainedValue() as CFRunLoopSource? {
+            runLoopSource = Unmanaged.passRetained(source)
+            CFRunLoopAddSource(CFRunLoopGetCurrent(), source, .defaultMode)
         }
-        RunLoop.main.add(timer!, forMode: .common)
-        checkBatteryLevel()  // Checa imediatamente na inicialização
+        checkBatteryLevel() // Checa imediatamente
     }
 
     func stopMonitoring() {
-        timer?.invalidate()
-        timer = nil
+        if let source = runLoopSource?.takeUnretainedValue() {
+            CFRunLoopRemoveSource(CFRunLoopGetCurrent(), source, .defaultMode)
+        }
+        runLoopSource = nil
     }
 
     private func checkBatteryLevel() {
         guard let snapshot = IOPSCopyPowerSourcesInfo()?.takeRetainedValue(),
-            let sources = IOPSCopyPowerSourcesList(snapshot)?
-                .takeRetainedValue() as? [CFTypeRef],
-            let source = sources.first,
-            let description = IOPSGetPowerSourceDescription(snapshot, source)?
-                .takeUnretainedValue() as? [String: Any],
-            let currentCapacity = description[kIOPSCurrentCapacityKey as String]
-                as? Int,
-            let maxCapacity = description[kIOPSMaxCapacityKey as String] as? Int
-        else {
+              let sources = IOPSCopyPowerSourcesList(snapshot)?.takeRetainedValue() as? [CFTypeRef],
+              let source = sources.first,
+              let description = IOPSGetPowerSourceDescription(snapshot, source)?
+                  .takeUnretainedValue() as? [String: Any],
+              let currentCapacity = description[kIOPSCurrentCapacityKey as String] as? Int,
+              let maxCapacity = description[kIOPSMaxCapacityKey as String] as? Int else {
             print("⚠️ Não foi possível obter informações da bateria.")
             return
         }
@@ -50,13 +52,13 @@ class BatteryMonitor: ObservableObject {
             do {
                 if batteryLevel <= 25 {
                     if estadoAtualDoSwitch != true {
-                        print("🔋 Switch ligado devido ao nível de bateria baixo")
+                        print("🔋 Ligando switch (bateria baixa)")
                         try await gerenciarEstadoSmartPowerStrip(ligar: true)
                         estadoAtualDoSwitch = true
                     }
                 } else if batteryLevel >= 70 {
                     if estadoAtualDoSwitch != false {
-                        print("🔋 Switch desligado devido ao nível de bateria alto")
+                        print("🔋 Desligando switch (bateria alta)")
                         try await gerenciarEstadoSmartPowerStrip(ligar: false)
                         estadoAtualDoSwitch = false
                     }
@@ -67,3 +69,4 @@ class BatteryMonitor: ObservableObject {
         }
     }
 }
+
