@@ -50,15 +50,15 @@ class BatteryMonitor: ObservableObject {
 
         Task {
             do {
-                if batteryLevel <= 25 {
+                if batteryLevel <= 20 {
                     if estadoAtualDoSwitch != true {
-                        print("🔋 Ligando switch (bateria baixa)")
+                        print("🪫 Ligando switch")
                         try await gerenciarEstadoSmartPowerStrip(ligar: true)
                         estadoAtualDoSwitch = true
                     }
-                } else if batteryLevel >= 70 {
+                } else if batteryLevel >= 80 {
                     if estadoAtualDoSwitch != false {
-                        print("🔋 Desligando switch (bateria alta)")
+                        print("🔋 Desligando switch")
                         try await gerenciarEstadoSmartPowerStrip(ligar: false)
                         estadoAtualDoSwitch = false
                     }
