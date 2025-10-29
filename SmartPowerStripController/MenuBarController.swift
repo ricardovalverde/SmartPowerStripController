@@ -91,7 +91,7 @@ struct PopoverContentView: View {
             HStack(spacing: 16) {
                 Button(action: {
                     Task {
-                        try await gerenciarEstadoSmartPowerStrip(ligar: true)
+                        try await gerenciarEstadoSmartPowerStrip(power: true)
                     }
                 }) {
                     VStack(spacing: 8) {
