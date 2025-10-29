@@ -110,7 +110,7 @@ struct PopoverContentView: View {
                 
                 Button(action: {
                     Task {
-                        try await gerenciarEstadoSmartPowerStrip(ligar: false)
+                        try await gerenciarEstadoSmartPowerStrip(power: false)
                     }
                 }) {
                     VStack(spacing: 8) {
