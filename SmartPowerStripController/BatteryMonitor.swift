@@ -53,13 +53,13 @@ class BatteryMonitor: ObservableObject {
                 if batteryLevel <= 20 {
                     if estadoAtualDoSwitch != true {
                         print("🪫 Ligando switch")
-                        try await gerenciarEstadoSmartPowerStrip(ligar: true)
+                        try await gerenciarEstadoSmartPowerStrip(power: true)
                         estadoAtualDoSwitch = true
                     }
                 } else if batteryLevel >= 80 {
                     if estadoAtualDoSwitch != false {
                         print("🔋 Desligando switch")
-                        try await gerenciarEstadoSmartPowerStrip(ligar: false)
+                        try await gerenciarEstadoSmartPowerStrip(power: false)
                         estadoAtualDoSwitch = false
                     }
                 }
